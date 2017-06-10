@@ -1,7 +1,9 @@
 package com.avenuecode.hotime.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -18,15 +20,14 @@ public class HorasTrabalhada implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column
+    @NotNull
     private Date data;
 
-    @Temporal(TemporalType.TIME)
     @Column
-    private Date horas;
+    private BigDecimal horas;
 
-    @Temporal(TemporalType.TIME)
     @Column
-    private Date horasExtras;
+    private BigDecimal horasExtras;
 
 
     public HorasTrabalhada() {
@@ -48,19 +49,19 @@ public class HorasTrabalhada implements Serializable {
         this.data = data;
     }
 
-    public Date getHoras() {
+    public BigDecimal getHoras() {
         return horas;
     }
 
-    public void setHoras(Date horas) {
+    public void setHoras(BigDecimal horas) {
         this.horas = horas;
     }
 
-    public Date getHorasExtras() {
+    public BigDecimal getHorasExtras() {
         return horasExtras;
     }
 
-    public void setHorasExtras(Date horasExtras) {
+    public void setHorasExtras(BigDecimal horasExtras) {
         this.horasExtras = horasExtras;
     }
 }

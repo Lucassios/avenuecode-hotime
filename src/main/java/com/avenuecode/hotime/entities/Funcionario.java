@@ -1,6 +1,8 @@
 package com.avenuecode.hotime.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -16,6 +18,8 @@ public class Funcionario implements Serializable {
     private Long id;
 
     @Column
+    @NotNull
+    @Size(min = 3)
     private String nome;
 
     @Column

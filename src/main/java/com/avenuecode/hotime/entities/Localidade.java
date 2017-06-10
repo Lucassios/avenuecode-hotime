@@ -1,6 +1,7 @@
 package com.avenuecode.hotime.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by lucascmarques on 10/06/17.
@@ -13,9 +14,11 @@ public class Localidade {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     @Column
     private String cidade;
 
+    @NotNull
     @Column
     private String pais;
 

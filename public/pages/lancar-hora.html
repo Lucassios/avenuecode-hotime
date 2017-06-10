@@ -15,7 +15,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body ng-app="hotime">
-
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -46,8 +45,8 @@
 					<input type="hidden" name="id" value="1" ng-model="userId">
 					<div class="form-group">
 						<label for="">Tipo de hora</label>
-						<select name="cidade" class="form-control" ng-model="userPosition" 
-						ng-options="userPositionOps.id as userPositionOps.description for userPositionOps in userPosition">
+						<select name="cidade" class="form-control" ng-model="hourType" 
+						ng-options="for hourType in hourTypes">
 						</select>
 					</div>
 					<div class="form-group">
@@ -72,8 +71,8 @@
 					<tr ng-repeat="hours in HoursData">
 						<th>{{hours.date}}</th>
 						<th>{{userPosition.description}}</th>
-						<th>{{workedNormalHours}}</th>
-						<th>{{workedExtraHours</th>
+						<th>{{hours.workedNormalHours}}</th>
+						<th>{{hours.workedExtraHours</th>
 						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
 					</tr>
 				</table>

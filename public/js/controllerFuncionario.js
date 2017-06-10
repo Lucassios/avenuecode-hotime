@@ -2,6 +2,14 @@ angular.module("hotime").controller("Funcionario", function($scope, APIFuncionar
 	$scope.funcionarios = [];
 	$scope.cargos = [];
 
+	var removeID = function(id) {
+		$scope.funcionarios = $scope.funcionarios.map(function(funcionario){
+			if (funcionario.id != id) {
+				return funcionario;
+			}
+		});
+	}
+
 	$scope.salvar = function (data) {
 		console.log(data);
 		APIFuncionario.salvar(data).then(function(response){
@@ -43,7 +51,8 @@ angular.module("hotime").controller("Funcionario", function($scope, APIFuncionar
 	}
 	$scope.excluir = function(id){
 		APIFuncionario.excluir(id).then(function(response){
-			alert("Funcionário apagado com sucesso!")
+			alert("Funcionário apagado com sucesso!");
+			removeID(id);
 			console.log(response.data);
 		},function(err){
 			alert("Erro ao apagar funcionario");

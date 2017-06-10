@@ -45,28 +45,19 @@
 				<form class="form">
 					<div class="form-group">
 						<label for="">Cargo</label>
-						<select name="cidade" ng-model="valorHora.cargo.id" class="form-control">
-							<option value="1">Software Engenier</option>
-							<option value="2">Manager</option>
-							<option value="3">Designer</option>
-							<option value="4">Marketing</option>
-							<option value="5">Tester</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="">Localidade</label>
-						<select name="cidade" ng-model="valorHora.localidade.id" class="form-control">
-							<option value="1">Brasil</option>
-							<option value="2">Estados Unidos</option>
-						</select>
+						<select name="cargo" ng-model="valorHora.cargo.id" class="form-control" ng-options="cargo.id as cargo.nome for cargo in cargos"></select>
 					</div>
 					<div class="form-group">
 						<label for="">Valor da Hora</label>
 						<input type="text" ng-model="valorHora.valorHora" name="valor_hora" class="form-control">
 					</div>
 					<div class="form-group">
+						<label for="">Localidade</label>
+						<select name="cidade" ng-model="valorHora.localidade.id" class="form-control" ng-options="localidade.id as localidade.cidade for localidade in localidades"></select>
+					</div>
+					<div class="form-group">
 						<label for="">Valor da Hora Extra</label>
-						<input type="text" ng-model="valorHora.valorHoraExtra" name="valor_hora_extra" class="form-control">
+						<input type="text" ng-model="valorHora.valorExtra" name="valor_hora_extra" class="form-control">
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary" ng-click="salvar(valorHora)">Salvar</button>
@@ -89,8 +80,8 @@
 						<td>{{::valor.localidade.pais}}</td>
 						<td>{{::valor.localidade.cidade}}</td>
 						<td>{{::valor.valorHora | currency}}</td>
-						<td>{{ 0 | currency }}</td>
-						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+						<td>{{::valor.valorExtra | currency }}</td>
+						<td><button class="btn btn-danger" ng-click="excluir(valor.id)"><i class="fa fa-trash"></i></button></td>
 					</tr>
 				</table>
 			</div>
@@ -99,6 +90,7 @@
 		<script src="/js/main.js"></script>
 		<script src="/js/serviceValorHora.js"></script>
 		<script src="/js/serviceCargo.js"></script>
+		<script src="/js/serviceLocalidade.js"></script>
 		<script src="/js/controllerValorHora.js"></script>
 
 	</div><!-- /.container -->

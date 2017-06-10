@@ -21,6 +21,9 @@ public class ValorHora implements Serializable {
     @NotNull
     private BigDecimal valorHora;
 
+    @Column
+    private BigDecimal valorExtra;
+
     @NotNull
     @ManyToOne
     @JoinColumn

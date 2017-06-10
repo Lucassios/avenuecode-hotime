@@ -46,7 +46,11 @@
 					<input type="hidden" name="id" value="1" ng-model="userId">
 					<div class="form-group">
 						<label for="">Tipo de hora</label>
-						<select name="cidade" class="form-control"></select>
+						<select name="cidade" class="form-control">
+							<option value="1">Software Engineer - Belo Horizonte - R$50</option>
+							<option value="2">Marketing - Belo Horizonte - R$50</option>
+							<option value="3">Diretor - Belo Horizonte - R$50</option>
+						</select>
 					</select>
 				</div>
 				<div class="form-group">
@@ -61,22 +65,21 @@
 					<label for="">Horas Extras</label>
 					<input type="text" class="form-control" name="horas_extras" ng-model="lancarHora.horasExtras">
 				</div>
+				<button class="btn btn-primary" ng-click="salvar(">Salvar</button>
 			</form>
 
 			<h2>Minhas horas</h2>
 			<table class="table table-striped">
 				<tr>
 					<th>Data</th>
-					<th>Cargo</th>
 					<th>Horas</th>
 					<th>Horas Extras</th>
 					<th></th>
 				</tr>
 				<tr ng-repeat="horas in horasLancadas">
-					<th>{{horas.date}}</th>
-					<th>{{userPosition.description}}</th>
-					<th>{{horas.workedNormalHours}}</th>
-					<th>{{horas.workedExtraHours</th>
+					<th>{{horas.data}}</th>
+					<th>{{horas.horas}}</th>
+					<th>{{horas.horasExtras}}</th>
 					<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
 				</tr>
 			</table>

@@ -44,27 +44,27 @@
 				<form class="form">
 					<div class="form-group">
 						<label for="">Cargo</label>
-						<select name="cidade" ng-model="valorHora.cargo.id" class="form-control" ng-options="cargo.id as cargo.nome for cargo in cargos">
+						<select name="cidade" required="required" ng-model="funcionario.cargo.id" class="form-control" ng-options="cargo.id as cargo.nome for cargo in cargos">
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="">Nome</label>
-						<input type="text" ng-model="funcionario.nome" name="nome" class="form-control">
+						<input type="text" required="required" ng-model="funcionario.nome" name="nome" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Senha</label>
-						<input type="password" ng-model="funcionario.senha" name="senha" class="form-control">
+						<input type="password" required="required" ng-model="funcionario.senha" name="senha" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Telefone</label>
-						<input type="text" ng-model="funcionario.telefone" name="telefone" class="form-control">
+						<input type="text"  required="required" ng-model="funcionario.telefone" name="telefone" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" ng-model="funcionario.email" name="email" class="form-control">
+						<input type="text" required="required" ng-model="funcionario.email" name="email" class="form-control">
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary" ng-click="salvar(funcionario)">Salvar</button>
+						<button class="btn btn-primary" required="required" ng-click="salvar(funcionario)">Salvar</button>
 					</div>
 				</form>
 
@@ -76,7 +76,7 @@
 						<th>Email</th>
 						<th></th>
 					</tr>
-					<tr ng-repeat="funcionario in funcionarios | filter: busca track by valor.id">
+					<tr ng-repeat="funcionario in funcionarios | filter: busca track by funcionario.id">
 						<td>{{::funcionario.id}}</td>
 						<td>{{::funcionario.nome}}</td>
 						<td>{{::funcionario.telefone}}</td>

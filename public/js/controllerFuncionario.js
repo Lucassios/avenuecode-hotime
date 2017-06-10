@@ -42,12 +42,21 @@ angular.module("hotime").controller("Funcionario", function($scope, APIFuncionar
 		});
 	}
 	$scope.excluir = function(id){
-		alert(id);
+		APIFuncionario.excluir(id).then(function(response){
+			alert("Funcionário apagado com sucesso!")
+			console.log(response.data);
+		},function(err){
+			alert("Erro ao apagar funcionario");
+			console.log("Erro");
+			console.log(err);
+		});
 	};
 	$scope.salvar = function(funcionario) {
 		console.log(funcionario);
 		APIFuncionario.salvar(funcionario).then(function(response){
 			console.log("Result");
+			$scope.funcionarios.push(funcionario)
+			alert("Funcionário cadastrado com sucesso!")
 			console.log(response.data);
 		},function(err){
 			alert("Erro ao salvar funcionario");

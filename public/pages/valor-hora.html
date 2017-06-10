@@ -12,7 +12,7 @@
 	<!-- Font Awsome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Angluar -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
 </head>
 <body ng-controller="ValorHora">
 
@@ -25,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/">
+				<a href="/index.html">
 					<img src="../img/logo.png" height="50px" alt="Hotime">
 				</a>
 			</div>
@@ -45,7 +45,7 @@
 				<form class="form">
 					<div class="form-group">
 						<label for="">Cargo</label>
-						<select name="cidade" class="form-control">
+						<select name="cidade" ng-model="valorHora.cargo.id" class="form-control">
 							<option value="1">Software Engenier</option>
 							<option value="2">Manager</option>
 							<option value="3">Designer</option>
@@ -54,32 +54,28 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="">País</label>
-						<select name="cidade" class="form-control">
+						<label for="">Localidade</label>
+						<select name="cidade" ng-model="valorHora.localidade.id" class="form-control">
 							<option value="1">Brasil</option>
 							<option value="2">Estados Unidos</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="cidade">Cidade</label>
-						<select name="cidade" class="form-control">
-							<option value="1">Belo Horizonte</option>
-							<option value="2">São Francisco</option>
-							<option value="3">São Paulo</option>
-						</select>
-					</div>
-					<div class="form-group">
 						<label for="">Valor da Hora</label>
-						<input type="text" name="valor_hora" class="form-control">
+						<input type="text" ng-model="valorHora.valorHora" name="valor_hora" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="">Valor da Hora Extra</label>
-						<input type="text" name="valor_hora_extra" class="form-control">
+						<input type="text" ng-model="valorHora.valorHoraExtra" name="valor_hora_extra" class="form-control">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary" ng-click="salvar(valorHora)">Salvar</button>
 					</div>
 				</form>
 
 				<table class="table table-striped">
 					<tr>
+						<th>ID</th>
 						<th>Cargo</th>
 						<th>País</th>
 						<th>Cidade</th>
@@ -87,30 +83,22 @@
 						<th>Hora Extra</th>
 						<th></th>
 					</tr>
-					<tr>
-						<td>Manager</td>
-						<td>Brasil</td>
-						<td>Belo Horizonte</td>
-						<td>R$ 90</td>
-						<td>Hora Extra</td>
-						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-					</tr>
-					<tr>
-						<td>Software Engenier</td>
-						<td>Brasil</td>
-						<td>São Paulo</td>
-						<td>R$ 50</td>
-						<td>Hora Extra</td>
+					<tr ng-repeat="valor in valorHoras | filter: busca track by valor.id">
+						<td>{{::valor.id}}</td>
+						<td>{{::valor.cargo.nome}}</td>
+						<td>{{::valor.localidade.pais}}</td>
+						<td>{{::valor.localidade.cidade}}</td>
+						<td>{{::valor.valorHora | currency}}</td>
+						<td>{{ 0 | currency }}</td>
 						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<!-- Angluar -->
-		<script src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
-		<!-- Angluar -->
 		<script src="/js/main.js"></script>
 		<script src="/js/serviceValorHora.js"></script>
+		<script src="/js/serviceCargo.js"></script>
 		<script src="/js/controllerValorHora.js"></script>
 
 	</div><!-- /.container -->

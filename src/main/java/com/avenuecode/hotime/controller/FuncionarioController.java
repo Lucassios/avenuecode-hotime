@@ -22,22 +22,22 @@ public class FuncionarioController {
     private FuncionarioRepository funcionarioRepository;
 
 
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Funcionario criarFuncionario(@RequestBody Funcionario funcionario) {
         return funcionarioRepository.save(funcionario);
     }
 
-    @RequestMapping(value = "/{funcionarioId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{funcionarioId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void removerfuncionario(@PathVariable Long funcionarioId) {
         funcionarioRepository.delete(funcionarioId);
     }
 
-    @RequestMapping(value = "/{funcionarioId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{funcionarioId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Funcionario buscar(@PathVariable Long funcionarioId) {
         return funcionarioRepository.findOne(funcionarioId);
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Funcionario> buscarTodas() {
         return (List) funcionarioRepository.findAll();
     }

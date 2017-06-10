@@ -22,17 +22,17 @@ public class LocalidadeController {
         return localidadeRepository.save(localidade);
     }
 
-    @RequestMapping(value = "/localidade", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void removerLocalidade(@PathVariable  Long localidadeId) {
+    @RequestMapping(value = "/localidade/{localidadeId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void removerLocalidade(@PathVariable Long localidadeId) {
         localidadeRepository.delete(localidadeId);
     }
 
-    @RequestMapping(value = "/localidade", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/localidade/{localidadeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Localidade buscar(@PathVariable  Long localidadeId) {
         return localidadeRepository.findOne(localidadeId);
     }
 
-    @RequestMapping(value = "/localidade", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/localidades", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Localidade> buscarTodas() {
         return (List) localidadeRepository.findAll();
     }

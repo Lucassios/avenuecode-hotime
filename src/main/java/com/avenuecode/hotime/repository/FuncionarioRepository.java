@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface FuncionarioRepository extends CrudRepository<Funcionario, Long> {
+
+    Funcionario findByEmailAndSenha(String email, String senha);
+
 }

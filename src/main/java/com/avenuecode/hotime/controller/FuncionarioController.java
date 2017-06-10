@@ -41,4 +41,10 @@ public class FuncionarioController {
     public List<Funcionario> buscarTodas() {
         return (List) funcionarioRepository.findAll();
     }
+
+    @GetMapping(value = "/autenticar", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Funcionario autenticar(@RequestParam(value = "email") String email, @RequestParam(value = "senha") String senha) {
+        return funcionarioRepository.findByEmailAndSenha(email, senha);
+    }
+
 }

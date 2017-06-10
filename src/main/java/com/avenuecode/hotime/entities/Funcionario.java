@@ -25,8 +25,15 @@ public class Funcionario implements Serializable {
     @Column
     private String telefone;
 
+    @NotNull
     @Column
     private String email;
+
+    @NotNull
+    private String senha;
+
+    @NotNull
+    private Cargo cargo;
 
     public Funcionario() {
     }
@@ -67,5 +74,21 @@ public class Funcionario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 }

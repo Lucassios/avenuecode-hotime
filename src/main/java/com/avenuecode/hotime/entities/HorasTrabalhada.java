@@ -1,6 +1,7 @@
 package com.avenuecode.hotime.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -19,6 +20,7 @@ public class HorasTrabalhada implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column
+    @NotNull
     private Date data;
 
     @Column

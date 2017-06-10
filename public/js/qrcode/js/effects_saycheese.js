@@ -78,14 +78,15 @@ function qrCodeDecoder(dataUrl) {
 // show info from qr code
 function showInfo(data) {
 	if (data !== 'error decoding QR Code') {
-		var htmldata = linkify(data);
-		$("#qrContent").addClass('hasContent');
-		$("#qrContent p").html(htmldata);
-	} else {
-		if ($("#qrContent").hasClass('hasContent')) {
+		var json = JSON.parse(data);
+		if (json.funcionario != undefined) {
+        	localStorage.setItem('funcionario', json);
+            window.location = "http://localhost:8080/pages/index.html"
 		} else {
-			$("#qrContent p").html('No QR Code in sight.');
+			alert("Falha na autenticação do QRCode.");
 		}
+	} else {
+        // alert("Falha na conversão do QRCode.");
 	}
 }
 

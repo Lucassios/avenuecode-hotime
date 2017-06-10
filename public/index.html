@@ -33,7 +33,19 @@
 <div class="container">
     <div class="row">
         <form class="form" ng-submit="autenticar(funcionario.email, funcionario.senha)">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-sm-6">
+                <div id="example" class="thumbnail embed-responsive embed-responsive-4by3"></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="videoSource">Select Camera</label>
+                        <select id="videoSource"><option selected>Default Camera</option></select>
+                    </div>
+                    <div class="col-sm-6">
+                        <a class="btn btn-primary pull-right" onclick="go()">Autenticar com QR Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input id="email" type="text" ng-model="funcionario.email" name="email" class="form-control">
@@ -42,8 +54,6 @@
                     <label for="senha">Senha</label>
                     <input id="senha" type="password" ng-model="funcionario.senha" name="senha" class="form-control">
                 </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
                 <button type="submit" class="btn btn-primary">Autenticar</button>
             </div>
         </form>
@@ -55,6 +65,27 @@
 <script src="/js/main.js"></script>
 <script src="/js/serviceAutenticacao.js"></script>
 <script src="/js/controllerAutenticacao.js"></script>
+
+<script src="/js/qrcode/js/jquery.min.js"></script>
+<script src="/js/qrcode/js/say-cheese.min.js"></script>
+<script src="/js/qrcode/js/qr/grid.js"></script>
+<script src="/js/qrcode/js/qr/version.js"></script>
+<script src="/js/qrcode/js/qr/detector.js"></script>
+<script src="/js/qrcode/js/qr/formatinf.js"></script>
+<script src="/js/qrcode/js/qr/errorlevel.js"></script>
+<script src="/js/qrcode/js/qr/bitmat.js"></script>
+<script src="/js/qrcode/js/qr/datablock.js"></script>
+<script src="/js/qrcode/js/qr/bmparser.js"></script>
+<script src="/js/qrcode/js/qr/datamask.js"></script>
+<script src="/js/qrcode/js/qr/rsdecoder.js"></script>
+<script src="/js/qrcode/js/qr/gf256poly.js"></script>
+<script src="/js/qrcode/js/qr/gf256.js"></script>
+<script src="/js/qrcode/js/qr/decoder.js"></script>
+<script src="/js/qrcode/js/qr/qrcode.js"></script>
+<script src="/js/qrcode/js/qr/findpat.js"></script>
+<script src="/js/qrcode/js/qr/alignpat.js"></script>
+<script src="/js/qrcode/js/qr/databr.js"></script>
+<script src="/js/qrcode/js/effects_saycheese.js"></script>
 
 </body>
 </html>

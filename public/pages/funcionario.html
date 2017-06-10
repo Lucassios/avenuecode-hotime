@@ -14,8 +14,7 @@
 	<!-- Angluar -->
 	<script src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
 </head>
-<body ng-controller="ValorHora">
-
+<body ng-controller="Funcionario">
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -45,61 +44,53 @@
 				<form class="form">
 					<div class="form-group">
 						<label for="">Cargo</label>
-						<select name="cidade" ng-model="valorHora.cargo.id" class="form-control">
-							<option value="1">Software Engenier</option>
-							<option value="2">Manager</option>
-							<option value="3">Designer</option>
-							<option value="4">Marketing</option>
-							<option value="5">Tester</option>
+						<select name="cidade" required="required" ng-model="funcionario.cargo.id" class="form-control" ng-options="cargo.id as cargo.nome for cargo in cargos">
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="">Localidade</label>
-						<select name="cidade" ng-model="valorHora.localidade.id" class="form-control">
-							<option value="1">Brasil</option>
-							<option value="2">Estados Unidos</option>
-						</select>
+						<label for="">Nome</label>
+						<input type="text" required="required" ng-model="funcionario.nome" name="nome" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="">Valor da Hora</label>
-						<input type="text" ng-model="valorHora.valorHora" name="valor_hora" class="form-control">
+						<label for="">Senha</label>
+						<input type="password" required="required" ng-model="funcionario.senha" name="senha" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="">Valor da Hora Extra</label>
-						<input type="text" ng-model="valorHora.valorHoraExtra" name="valor_hora_extra" class="form-control">
+						<label for="">Telefone</label>
+						<input type="text"  required="required" ng-model="funcionario.telefone" name="telefone" class="form-control">
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary" ng-click="salvar(valorHora)">Salvar</button>
+						<label for="">Email</label>
+						<input type="text" required="required" ng-model="funcionario.email" name="email" class="form-control">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary" required="required" ng-click="salvar(funcionario)">Salvar</button>
 					</div>
 				</form>
 
 				<table class="table table-striped">
 					<tr>
 						<th>ID</th>
-						<th>Cargo</th>
-						<th>País</th>
-						<th>Cidade</th>
-						<th>Valor Hora</th>
-						<th>Hora Extra</th>
+						<th>Nome</th>
+						<th>Telefone</th>
+						<th>Email</th>
 						<th></th>
 					</tr>
-					<tr ng-repeat="valor in valorHoras | filter: busca track by valor.id">
-						<td>{{::valor.id}}</td>
-						<td>{{::valor.cargo.nome}}</td>
-						<td>{{::valor.localidade.pais}}</td>
-						<td>{{::valor.localidade.cidade}}</td>
-						<td>{{::valor.valorHora | currency}}</td>
-						<td>{{ 0 | currency }}</td>
-						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+					<tr ng-repeat="funcionario in funcionarios | filter: busca track by funcionario.id">
+						<td>{{::funcionario.id}}</td>
+						<td>{{::funcionario.nome}}</td>
+						<td>{{::funcionario.telefone}}</td>
+						<td>{{::funcionario.email}}</td>
+						<td><button ng-click="excluir(funcionario.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<!-- Angluar -->
 		<script src="/js/main.js"></script>
-		<script src="/js/serviceValorHora.js"></script>
 		<script src="/js/serviceCargo.js"></script>
-		<script src="/js/controllerValorHora.js"></script>
+		<script src="/js/serviceFuncionario.js"></script>
+		<script src="/js/controllerFuncionario.js"></script>
 
 	</div><!-- /.container -->
 </body>

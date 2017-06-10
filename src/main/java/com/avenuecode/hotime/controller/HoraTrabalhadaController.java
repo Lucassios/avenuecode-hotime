@@ -12,27 +12,28 @@ import java.util.List;
  * Created by lucascmarques on 10/06/17.
  */
 @RestController
+@RequestMapping("/horatrabalhada")
 public class HoraTrabalhadaController {
 
     @Autowired
     private HoraTrabalhadaRepository horaTrabalhadaRepository;
 
-    @RequestMapping(value = "/horatrabalhada", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public HoraTrabalhada criar(@RequestBody HoraTrabalhada horaTrabalhada) {
         return horaTrabalhadaRepository.save(horaTrabalhada);
     }
 
-    @RequestMapping(value = "/horatrabalhada/{horaTrabalhadaId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{horaTrabalhadaId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void remover(@PathVariable Long horaTrabalhadaId) {
         horaTrabalhadaRepository.delete(horaTrabalhadaId);
     }
 
-    @RequestMapping(value = "/horatrabalhada/{horaTrabalhadaId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public HoraTrabalhada buscar(@PathVariable  Long horaTrabalhadaId) {
+    @GetMapping(value = "/{horaTrabalhadaId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HoraTrabalhada buscar(@PathVariable Long horaTrabalhadaId) {
         return horaTrabalhadaRepository.findOne(horaTrabalhadaId);
     }
 
-    @RequestMapping(value = "/horatrabalhada", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<HoraTrabalhada> buscarTodas() {
         return (List) horaTrabalhadaRepository.findAll();
     }

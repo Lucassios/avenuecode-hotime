@@ -1,4 +1,9 @@
 angular.module("hotime").controller('LancarHoraController',function($scope, APIHorasLancadas, APILocalidade, APIValorHora){
+
+    window.onload = function () {
+        getLocation();
+    };
+
 	$scope.horasLancadas = [];
 	$scope.valorHoras = [];
 	$scope.localidades = [];
@@ -41,4 +46,54 @@ angular.module("hotime").controller('LancarHoraController',function($scope, APIH
 		});
 	}
 	$scope.loadAPI();
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        }
+        else {
+            alert("Não há suporte nesse navegador.");
+        }
+    }
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+
+        console.log("Lat >> "+ lat);
+        console.log("Lng >> "+ lng);
+
+        APILocalidade.obterLocalidade(lat + ',' + lng).then(function (response) {
+            console.log("LocalidadeAtual >>> ");
+            console.log(response.data);
+            if (response.data) {
+                $scope.localidadeAtual = response.data;
+            }
+        }, function (err) {
+            alert("Erro ao consultar API");
+            console.log("Erro");
+            console.log(err);
+        })
+
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("Usuário rejeitou a solicitação de Geolocalização.");
+                break;
+
+            case error.POSITION_UNAVAILABLE:
+                alert("Localização indisponível.");
+                break;
+
+            case error.TIMEOUT:
+                alert("O tempo da requisição expirou.");
+                break;
+
+            case error.UNKNOWN_ERROR:
+                alert("Algum erro desconhecido aconteceu.");
+                break;
+        }
+    }
 });

@@ -8,19 +8,17 @@ angular.module("hotime").factory("APIHorasLancadas", function($http){
 	};
 
 	var _buscarHoraTrabalhada = function(id){
-		return $http.get('http://localhost:8080/api/horatrabalhada'/ + id);
+		return $http.get('http://localhost:8080/api/horatrabalhada/' + id);
 	};
 
 	var _buscarTodasAsHoras = function(){
-		return $http.get('http://localhost:8080/api/horatrabalha');
+		return $http.get('http://localhost:8080/api/horatrabalhada');
 	};
 
 	return {
-		lancarHora: _buuscarCargo,
+		salvar: _lancarHora,
 		remover: _removerHoraTrabalhada,
 		listar: _buscarTodasAsHoras,
 		obter: _buscarHoraTrabalhada
 	};
-});/**
- * 
- */
+});

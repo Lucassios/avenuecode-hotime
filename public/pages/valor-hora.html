@@ -34,6 +34,7 @@
 					<li><a href="valor-hora.html">Cadastrar horas</a></li>
 					<li><a href="lancar-hora.html">Lançar Horas</a></li>
 					<li><a href="funcionario.html">Funcionários</a></li>
+					<li><a onclick="downloadQRCode()" href="#">QR Code</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -49,7 +50,7 @@
 					</div>
 					<div class="form-group">
 						<label for="">Valor da Hora</label>
-						<input type="text" ng-model="valorHora.valorHora" name="valor_hora" class="form-control">
+						<input type="text" ng-model="valorHora.valorHora" name="valor_hora" class="form-control" ng-options="valor.id as (valor.localidade.cidade + valor.localidade.horas)  for valor in valorHoras">
 					</div>
 					<div class="form-group">
 						<label for="">Localidade</label>

@@ -10,9 +10,9 @@ import java.util.Date;
  * @author Silas
  * @since 10/06/2017
  */
-@Entity
 @Table
-public class HorasTrabalhada implements Serializable {
+@Entity
+public class HoraTrabalhada implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +23,18 @@ public class HorasTrabalhada implements Serializable {
     @NotNull
     private Date data;
 
+    @NotNull
     @Column
     private BigDecimal horas;
 
     @Column
     private BigDecimal horasExtras;
 
+    @NotNull
+    @ManyToOne
+    private Funcionario funcionario;
 
-    public HorasTrabalhada() {
+    public HoraTrabalhada() {
     }
 
     public Long getId() {
@@ -63,5 +67,13 @@ public class HorasTrabalhada implements Serializable {
 
     public void setHorasExtras(BigDecimal horasExtras) {
         this.horasExtras = horasExtras;
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 }

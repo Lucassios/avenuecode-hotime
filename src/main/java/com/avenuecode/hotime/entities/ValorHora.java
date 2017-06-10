@@ -23,12 +23,12 @@ public class ValorHora implements Serializable {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(referencedColumnName = "ID")
+    @JoinColumn
     private Localidade localidade;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(referencedColumnName = "ID")
+    @JoinColumn
     private Cargo cargo;
 
     public ValorHora() {

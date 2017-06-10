@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LocalidadeRepository extends CrudRepository<Localidade, Long> {
 
+    Localidade findLocalidadeByCidadeContains(String nome);
 }

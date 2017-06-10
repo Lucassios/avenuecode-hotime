@@ -15,10 +15,16 @@ angular.module("hotime").factory("APILocalidade", function($http){
 		return $http.delete('http://localhost:8080/api/localidade/' + id);
 	};
 
-	return {
+    var _obterLocalidade = function (latlng) {
+        return $http.get('http://localhost:8080/api/localidade/latlng/' + latlng);
+    };
+
+
+    return {
 		buscar: _buuscarlocalidade,
 		salvar: _salvarlocalidade,
 		listar: _listarlocalidade,
-		excluir: _excluirlocalidade
+		excluir: _excluirlocalidade,
+        obterLocalidade: _obterLocalidade
 	};
 });

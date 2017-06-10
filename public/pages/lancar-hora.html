@@ -53,6 +53,10 @@
 						<label for="">Localidade</label>
 						<select name="localidade" ng-model="lancarHora.localidade.id" class="form-control" ng-options="localidade.id as localidade.cidade for localidade in localidades"></select>
 					</div>
+                    <div class="form-group">
+                        <label for="">Localização Atual</label>
+                        <input type="text" class="form-control" name="localidadeAtual" ng-model="localidadeAtual.nome">
+                    </div>
 				<div class="form-group">
 					<label for="">Horas Trabalhadas</label>
 					<input type="text" class="form-control" name="horas" ng-model="lancarHora.horas">

@@ -14,7 +14,7 @@
 	<!-- Font Awsome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body ng-app="hotime">
 
 	<nav class="navbar navbar-default">
 		<div class="container">
@@ -39,28 +39,24 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" ng-controller="LancarHoraController">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<form class="form">
-					<input type="hidden" name="id" value="1">
+					<input type="hidden" name="id" value="1" ng-model="userId">
 					<div class="form-group">
 						<label for="">Tipo de hora</label>
-						<select name="cidade" class="form-control">
-							<option value="1">Software Engenier - São Paulo</option>
-							<option value="2">Software Engenier - Belo Horizonte </option>
-							<option value="3">Software Engenier - São Francisco</option>
-							<option value="4">Marketing - Belo Horizonte</option>
-							<option value="5">Tester - São Paulo</option>
+						<select name="cidade" class="form-control" ng-model="userPosition" 
+						ng-options="userPositionOps.id as userPositionOps.description for userPositionOps in userPosition">
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="">Horas Trabalhadas</label>
-						<input type="text" class="form-control" name="horas">
+						<input type="text" class="form-control" name="horas" ng-model="workedNormalHours">
 					</div>
 					<div class="form-group">
 						<label for="">Horas Extras</label>
-						<input type="text" class="form-control" name="horas_extras">
+						<input type="text" class="form-control" name="horas_extras" ng-model="workedExtraHours">
 					</div>
 				</form>
 
@@ -73,25 +69,11 @@
 						<th>Horas Extras</th>
 						<th></th>
 					</tr>
-					<tr>
-						<th>10/10/2017</th>
-						<th>Developer</th>
-						<th>5</th>
-						<th>0</th>
-						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-					</tr>
-					<tr>
-						<th>10/10/2017</th>
-						<th>Developer</th>
-						<th>5</th>
-						<th>0</th>
-						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-					</tr>
-					<tr>
-						<th>10/10/2017</th>
-						<th>Developer</th>
-						<th>5</th>
-						<th>0</th>
+					<tr ng-repeat="hours in HoursData">
+						<th>{{hours.date}}</th>
+						<th>{{userPosition.description}}</th>
+						<th>{{workedNormalHours}}</th>
+						<th>{{workedExtraHours</th>
 						<td><button class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
 					</tr>
 				</table>
@@ -101,4 +83,6 @@
 
 	</div><!-- /.container -->
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+<script type="text/javascript" src="/js/LancarHoraController.js"></script>
 </html>

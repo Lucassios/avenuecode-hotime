@@ -5,7 +5,7 @@ angular.module("hotime").controller("Autenticacao", function($scope, APIAutentic
         	if (response.data.length != undefined) {
                 alert("Falha na autenticação! Verifique seu usuário e senha.");
 			} else {
-                localStorage.setItem('funcionario', response.data);
+                localStorage.setItem('funcionario', JSON.stringify(response.data));
                 console.log(localStorage.getItem('funcionario'));
         		window.location = "http://localhost:8080/pages/index.html"
 			}

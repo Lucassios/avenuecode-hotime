@@ -79,8 +79,8 @@ function qrCodeDecoder(dataUrl) {
 function showInfo(data) {
 	if (data !== 'error decoding QR Code') {
 		var json = JSON.parse(data);
-		if (json.funcionario != undefined) {
-        	localStorage.setItem('funcionario', json);
+		if (json.email != undefined) {
+        	localStorage.setItem('funcionario', JSON.stringify(json));
             window.location = "http://localhost:8080/pages/index.html"
 		} else {
 			alert("Falha na autenticação do QRCode.");

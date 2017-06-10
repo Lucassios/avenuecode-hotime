@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="hotime">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -12,7 +12,7 @@
 	<!-- Angluar -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 </head>
-<body>
+<body ng-controller="Index">
 
 	<nav class="navbar navbar-default">
 		<div class="container">
@@ -29,7 +29,7 @@
 					<li><a href="/pages/valor-hora.html">Cadastrar horas</a></li>
 					<li><a href="/pages/lancar-hora.html">Lançar Horas</a></li>
 					<li><a href="/pages/funcionario.html">Funcionários</a></li>
-					<li><a onclick="downloadQRCode()" href="#">QR Code</a></li>
+					<li><a ng-click="gerarQrCode()" href="#">QR Code</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -46,6 +46,8 @@
 	</div><!-- /.container -->
 
 	<script src="/js/main.js"></script>
+	<script src="/js/autenticacao.js"></script>
+	<script src="/js/controllerIndex.js"></script>
 
 </body>
 </html>
